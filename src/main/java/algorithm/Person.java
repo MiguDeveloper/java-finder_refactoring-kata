@@ -4,30 +4,16 @@ import java.util.Date;
 
 public class Person {
     public String name;
-    public Date birthDate;
+    private Date birthDate;
 
-    public static Person create(String name, Date birthDate){
-        Person person = new Person();
-        person.name = name;
-        person.birthDate = birthDate;
-
-        return person;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Person(String name, Date birthDate) {
         this.name = name;
+        this.birthDate = birthDate;
     }
 
-    public Date getBirthDate() {
+    public Date birthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
 }
 

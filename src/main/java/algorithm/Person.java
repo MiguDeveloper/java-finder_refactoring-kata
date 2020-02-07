@@ -6,6 +6,14 @@ public class Person {
     public String name;
     public Date birthDate;
 
+    public static Person create(String name, Date birthDate){
+        Person person = new Person();
+        person.name = name;
+        person.birthDate = birthDate;
+
+        return person;
+    }
+
     public String getName() {
         return name;
     }

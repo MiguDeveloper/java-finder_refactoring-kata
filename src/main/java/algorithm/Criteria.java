@@ -1,5 +1,5 @@
 package algorithm;
 
-public enum FT {
+public enum Criteria {
     One, Two
 }

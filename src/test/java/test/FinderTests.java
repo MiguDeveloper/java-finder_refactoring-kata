@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import algorithm.F;
-import algorithm.FT;
+import algorithm.Criteria;
 import algorithm.Finder;
 import algorithm.Person;
 
@@ -38,7 +38,7 @@ public class FinderTests {
         List<Person> list = new ArrayList<Person>();
         Finder finder = new Finder(list);
 
-        F result = finder.Find(FT.One);
+        F result = finder.Find(Criteria.One);
         assertEquals(null, result.P1);
 
         assertEquals(null, result.P2);
@@ -51,7 +51,7 @@ public class FinderTests {
 
         Finder finder = new Finder(list);
 
-        F result = finder.Find(FT.One);
+        F result = finder.Find(Criteria.One);
 
         assertEquals(null, result.P1);
         assertEquals(null, result.P2);
@@ -64,7 +64,7 @@ public class FinderTests {
         list.add(greg);
         Finder finder = new Finder(list);
 
-        F result = finder.Find(FT.One);
+        F result = finder.Find(Criteria.One);
 
         assertEquals(sue, result.P1);
         assertEquals(greg, result.P2);
@@ -78,7 +78,7 @@ public class FinderTests {
 
         Finder finder = new Finder(list);
 
-        F result = finder.Find(FT.Two);
+        F result = finder.Find(Criteria.Two);
 
         assertEquals(greg, result.P1);
         assertEquals(mike, result.P2);
@@ -93,7 +93,7 @@ public class FinderTests {
         list.add(greg);
         Finder finder = new Finder(list);
 
-        F result = finder.Find(FT.Two);
+        F result = finder.Find(Criteria.Two);
 
         assertEquals(sue, result.P1);
         assertEquals(sarah, result.P2);
@@ -109,7 +109,7 @@ public class FinderTests {
 
         Finder finder = new Finder(list);
 
-        F result = finder.Find(FT.One);
+        F result = finder.Find(Criteria.One);
 
         assertEquals(sue, result.P1);
         assertEquals(greg, result.P2);

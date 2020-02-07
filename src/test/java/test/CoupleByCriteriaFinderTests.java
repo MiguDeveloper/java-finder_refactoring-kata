@@ -1,18 +1,18 @@
 package test;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import algorithm.Couple;
 import algorithm.Criteria;
 import algorithm.CoupleByCriteriaFinder;
 import algorithm.Person;
+
+import static org.junit.Assert.*;
 
 public class CoupleByCriteriaFinderTests {
 
@@ -26,10 +26,8 @@ public class CoupleByCriteriaFinderTests {
         List<Person> list = new ArrayList<Person>();
         CoupleByCriteriaFinder finder = new CoupleByCriteriaFinder(list);
 
-        Couple couple = finder.Find(Criteria.Closed);
-        assertEquals(null, couple.youngest);
-
-        assertEquals(null, couple.oldest);
+        Optional<Couple> couple = finder.find(Criteria.Closed);
+        assertFalse(couple.isPresent());
     }
 
     @Test
@@ -39,10 +37,9 @@ public class CoupleByCriteriaFinderTests {
 
         CoupleByCriteriaFinder finder = new CoupleByCriteriaFinder(list);
 
-        Couple couple = finder.Find(Criteria.Closed);
+        Optional<Couple> couple = finder.find(Criteria.Closed);
 
-        assertEquals(null, couple.youngest);
-        assertEquals(null, couple.oldest);
+        assertFalse(couple.isPresent());
     }
 
     @Test
@@ -52,10 +49,11 @@ public class CoupleByCriteriaFinderTests {
         list.add(greg);
         CoupleByCriteriaFinder finder = new CoupleByCriteriaFinder(list);
 
-        Couple couple = finder.Find(Criteria.Closed);
+        Optional<Couple> couple = finder.find(Criteria.Closed);
 
-        assertEquals(sue, couple.youngest);
-        assertEquals(greg, couple.oldest);
+        assertTrue(couple.isPresent());
+        assertEquals(sue, couple.get().youngest);
+        assertEquals(greg, couple.get().oldest);
     }
 
     @Test
@@ -66,10 +64,11 @@ public class CoupleByCriteriaFinderTests {
 
         CoupleByCriteriaFinder finder = new CoupleByCriteriaFinder(list);
 
-        Couple couple = finder.Find(Criteria.Farthest);
+        Optional<Couple> couple = finder.find(Criteria.Farthest);
 
-        assertEquals(greg, couple.youngest);
-        assertEquals(mike, couple.oldest);
+        assertTrue(couple.isPresent());
+        assertEquals(greg, couple.get().youngest);
+        assertEquals(mike, couple.get().oldest);
     }
 
     @Test
@@ -81,10 +80,11 @@ public class CoupleByCriteriaFinderTests {
         list.add(greg);
         CoupleByCriteriaFinder finder = new CoupleByCriteriaFinder(list);
 
-        Couple couple = finder.Find(Criteria.Farthest);
+        Optional<Couple> couple = finder.find(Criteria.Farthest);
 
-        assertEquals(sue, couple.youngest);
-        assertEquals(sarah, couple.oldest);
+        assertTrue(couple.isPresent());
+        assertEquals(sue, couple.get().youngest);
+        assertEquals(sarah, couple.get().oldest);
     }
 
     @Test
@@ -97,10 +97,11 @@ public class CoupleByCriteriaFinderTests {
 
         CoupleByCriteriaFinder finder = new CoupleByCriteriaFinder(list);
 
-        Couple couple = finder.Find(Criteria.Closed);
+        Optional<Couple> couple = finder.find(Criteria.Closed);
 
-        assertEquals(sue, couple.youngest);
-        assertEquals(greg, couple.oldest);
+        assertTrue(couple.isPresent());
+        assertEquals(sue, couple.get().youngest);
+        assertEquals(greg, couple.get().oldest);
     }
 
 }
